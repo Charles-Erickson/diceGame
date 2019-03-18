@@ -1,5 +1,10 @@
 'use strict'
 
+// let "Paper">"Rock"
+// let "Rock">'Scissors'
+// let 'Scissors'>'Paper'
+// //holder for later formula
+
 function rockPaperScissors(){
 	let min=1
 	let max=4
@@ -57,37 +62,47 @@ function fourteenSidedDice(){
 	console.log(amount)
 }
 
-// sixSidedDice();
-// eightSidedDice();
-// tenSidedDice()
-// twelveSidedDice()
-// twentySidedDice()
-
-function rollDice(input){
-	if(input!=4, 6, 8, 10, 12, 14){
-		prompt('Enter a vaild dice');
-	}
-	else if(input==4){
+function rollDice(number){
+	if(number==4){
 		fourSidedDice();
 	}
-	else if(input==6){
+	else if(number==6){
 		sixSidedDice()
 	}
-	else if(input==8){
+	else if(number==8){
 		eightSidedDice();
 	}
-	else if(input==10){
+	else if(number==10){
 		tenSidedDice();
 	}
-	else if(input==12){
+	else if(number==12){
 		twelveSidedDice();
 	}
-	else if(input==14){
+	else if(number==14){
 		fourteenSidedDice();
 	}		
-
-	
+	else{
+		console.log('Enter a real dice amount');
+	}
 }
-let input=prompt("Enter 4, 6, 8, 10, 12");
 
-rollDice()
+function getRPSCards(){
+	input= prompt('Enter Dice size');
+	let rSPRoll=rollDice(input);
+	i=0;
+	while(i<rSPRoll){
+		rockPaperScissors(); i++;
+	}
+}
+
+
+
+function paperArray(){
+	let newArray=[];
+	if(rockPaperScissors()=="Paper"){
+		let paperArray= rollDice()
+	}
+
+}
+
+getRPSCards()
