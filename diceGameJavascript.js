@@ -87,37 +87,73 @@ function rollDice(number){
 	}
 }
 
-function gameRules(playerOneInput,playerTwoInput){
+function gameRules(){
+	let playerOneInput=prompt('Player one: Rock, Paper, or Scissors?')
+	let playerTwoInput=prompt('Player two: Rock, Paper, or Scissors?')
 	if(playerOneInput=="Paper" && playerTwoInput=="Rock"){
 		alert('Player One Wins!!!!');
-		return playerOneWin
+			return
 	}
 	else if(playerOneInput=='Scissors' && playerTwoInput=='Paper'){
 		alert('Player One Wins!!!!');
-		return playerOneWin
+			return
 	}
 	else if(playerOneInput=='Rock' && playerTwoInput=='Scissors'){
 		alert('Player One Wins!!!!');
-		return playerOneWin
+			return 
 	}
 	else if(playerTwoInput=='Paper' && playerOneInput=="Rock"){
 		alert('Player Two Wins!!!!');
-		return playerTwoWin
+			return
 	}
 	else if(playerTwoInput=='Rock' && playerOneInput=='Scissors'){
 		alert('Player Two Wins!!!!');
-		return playerTwoWin
+			return
 	}
 	else if(playerTwoInput=='Scissors' && playerOneInput=="Paper"){
 		alert('Player Two Wins!!!!');
-		return playerTwoWin
+			return
 	}
 	else if( playerOneInput===playerTwoInput){
 		alert('Draw')
+		return 
 	}
 	else{
-		prompt('redo')
+		alert('redo')
 	}
+}
+
+function playerOneInput(){
+	// let rock='rock'
+	let input=prompt('Player One enter Rock, Paper, or Scissors')
+	// if(input=='paper'){
+	// 	//return paper
+	// }
+	// else if(input=='rock'){
+	// 	//return rock
+	// }
+	// else if(input== 'scissors'){
+	// 	//return scissors
+	// }
+	// else{
+	// 	prompt('Please enter rock, paper, or scissors')
+	// }
+}
+
+function playerTwoInput(){
+	let input=prompt('Player Two enter Rock, Paper, or Scissors')
+	// if(input=='paper'){
+	// 	//return paper
+	// }
+	// else if(input=='rock'){
+	// 	//return rock
+	// }
+	// else if(input== 'scissors'){
+	// 	//return scissors
+	// }
+	// else{
+	// 	prompt('Please enter rock, paper, or scissors')
+	// }
 }
 
 // function getRPSCards(){
@@ -179,10 +215,11 @@ function gameRules(playerOneInput,playerTwoInput){
 // 	}
 // }
 
-function getCards(number){
+function getCards(){
 	
-	let input=rollDice(number);
-	return input
+	let input=prompt('Enter dice size');
+	let cards=rollDice(input);
+	return cards
 }
 
 function playerArray(){
@@ -250,6 +287,9 @@ function playerOneArray(){
 //[getCards(),getCards(),getcards()]
 // rockArray()
 
-function diceTracker(){
+//gameRules(playerOneInput(),playerTwoInput())
 
-}
+// playerOneArray()
+
+gameRules();
+getCards();
