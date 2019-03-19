@@ -19,7 +19,7 @@ else if(amount==3){
 	console.log('Scissors')
 }
 }
-
+rockPaperScissors();
 function fourSidedDice(){
 	let min=1
 	let max=5
@@ -87,22 +87,48 @@ function rollDice(number){
 }
 
 function getRPSCards(){
-	input= prompt('Enter Dice size');
+	let input= prompt('Enter Dice size');
 	let rSPRoll=rollDice(input);
-	i=0;
-	while(i<rSPRoll){
+	let i=0;
+	do{
 		rockPaperScissors(); i++;
 	}
+	while(i<rSPRoll){
+		
+	}
 }
-
-
 
 function paperArray(){
 	let newArray=[];
-	if(rockPaperScissors()=="Paper"){
-		let paperArray= rollDice()
-	}
-
+	let input=prompt('Enter dice size');
+	do{
+		let paperNumber= rollDice(input);
+	while(rockPaperScissors()=="Paper")}
+	let paperArray=newArray.push(paperNumber);
 }
 
-getRPSCards()
+function rockArray(){
+	let newArray=[];
+	let input= prompt('Enter dice size');
+	do{
+		let rockNumber= rollDice(input);
+		while(rockPaperScissors()=="Rock")
+	}
+	let rockArray=newArray.splice(0,rockNumber);
+}
+
+function scissorArray(){
+	let newArray=[];
+	let input=prompt('Enter dice size');
+	do{
+		let scissorNumber= rollDice(input);
+		while(rockPaperScissors()=="Scissors")
+	}
+	let scissorArray=newArray.splice(0,1,scissorNumber)
+}
+
+function cardArray(){
+	let cardArray=paperArray()+scissorArray()+rockArray();
+}
+
+function 
