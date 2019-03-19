@@ -95,9 +95,68 @@ function rollDice(){
 	}
 }
 
+function getCards(){
+	let cards=rollDice();
+	return cards
+}
+
+function arrayPlayer(){
+	let paper=getCards();
+	let rock=getCards();
+	let scissors= getCards();
+	let pap=getCards();
+	let roc=getCards();
+	let scis= getCards();
+	let playerArray=[paper+pap,rock+rock,scissors+scis]
+	return playerArray
+
+}
+
+function getPlayerTwoHand(){
+	let twoHand=arrayPlayer();
+	console.log(twoHand);
+	return twoHand
+
+}
+
+
+// function playerArray(){
+// 	let playerArray=[getCards(),getCards(),getCards()]
+// 	return playerArray
+// }
+
+function playCard(){
+	let input=prompt('Player one: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
+	let playCard;
+	switch(input){
+		case(1):
+		playcard="Paper"
+		return playCard;
+		break;
+	case(2):
+		playCard='Rock'
+		return playCard;
+		break;
+	case(3):
+		playCard='Scissors'
+		return playCard;
+		break;
+	default:
+		prompt('Enter 1, 2, or 3')
+	}
+}
+
+function getPlayerOneHand(){
+	let oneHand=arrayPlayer()
+	console.log(oneHand)
+	return oneHand
+}
+
+// gameRules();
+
 function gameRules(){
-	let playerOneInput=prompt('Player one: Rock, Paper, or Scissors?')
-	let playerTwoInput=prompt('Player two: Rock, Paper, or Scissors?')
+	let playerOneInput=playCard()
+	let playerTwoInput=playCard()
 
 	if(playerOneInput=="Paper" && playerTwoInput=="Rock"){
 		alert('Player One Wins!!!!');
@@ -132,6 +191,8 @@ function gameRules(){
 		alert('redo')
 	}
 }
+
+
 
 // function playerOneInput(){
 	// let rock='rock'
@@ -225,38 +286,33 @@ function gameRules(){
 // 	}
 // }
 
-function getCards(){
-	let cards=rollDice();
-	return cards
-}
 
-function playerArray(){
-	let paperInput=rollDice()
-	let rockInput=rollDice()
-	let scissorInput=rollDice()
-	let playerArray=[paperInput,rockInput,scissorInput]
-	return playerArray
+// console.log(playerArray())
+// function playerArray(){
+// 	let paperInput=rollDice()
+// 	let rockInput=rollDice()
+// 	let scissorInput=rollDice()
+// 	let playerArray=[paperInput,rockInput,scissorInput]
+// 	return playerArray
 
-}
-console.log(arrayPlayer())
+// }
+// console.log(arrayPlayer())
 
-function arrayPlayer(){
-	let arrayPlayerOne=[getCards(),getCards(),getCards()]
-	return arrayPlayerOne
-}
 
-function playerOneArray(){
-	let playerOneArray=[playerArray()+arrayPlayer()]
-	console.log(playerOneArray);
-	return playerOneArray
-}
 
-function combineArrays(){
-	let newSumArray;
-	for(i=0;i<playerOneArray.length;i++){
+// function playerOneArray(){
+// 	let playerOneArray=[playerArray()+arrayPlayer()]
+// 	console.log(playerOneArray);
+// 	return playerOneArray
+// }
+// console.log(playerOneArray())
 
-	}
-}
+// function combineArrays(){
+// 	let newSumArray;
+// 	for(i=0;i<playerOneArray.length;i++){
+
+// 	}
+// }
 
 
 
@@ -303,6 +359,3 @@ function combineArrays(){
 //gameRules(playerOneInput(),playerTwoInput())
 
 // playerOneArray()
-
-rollDice()
-playerArray()
