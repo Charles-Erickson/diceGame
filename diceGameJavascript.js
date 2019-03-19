@@ -24,63 +24,71 @@
 function fourSidedDice(){
 	let min=1
 	let max=5
-let amount=Math.floor(Math.random() *(max-min)+min);
-console.log(amount)
+	let amount=Math.floor(Math.random() *(max-min)+min);
+	return amount
 }
 
 function sixSidedDice(){
 	let min=1
 	let max=7
-let amount=Math.floor(Math.random() *(max-min)+min);
-console.log(amount)
+	let amount=Math.floor(Math.random() *(max-min)+min);
+	return amount
 }
 
 function eightSidedDice(){
 	let min=1
 	let max=9
-let amount=Math.floor(Math.random() *(max-min)+min);
-console.log(amount)
+	let amount=Math.floor(Math.random() *(max-min)+min);
+	return amount
 }
 
 function tenSidedDice(){
 	let min=1
 	let max=11
-let amount=Math.floor(Math.random() *(max-min)+min);
-console.log(amount)
+	let amount=Math.floor(Math.random() *(max-min)+min);
+	return amount
 }
 
 function twelveSidedDice(){
 	let min=1
 	let max=13
-let amount=Math.floor(Math.random() *(max-min)+min);
-console.log(amount)
+	let amount=Math.floor(Math.random() *(max-min)+min);
+	return amount
 }
 
 function fourteenSidedDice(){
 	let min=1
 	let max=15
 	let amount=Math.floor(Math.random() *(max-min)+min);
-	console.log(amount)
+	return amount
 }
 
-function rollDice(number){
+function rollDice(){
+	let number=prompt('Enter a dice size 4, 6, 8, 10, 12, 14:')
+	let amount;
 	if(number==4){
-		fourSidedDice();
+		amount=fourSidedDice();
+		return amount
 	}
 	else if(number==6){
-		sixSidedDice()
+		amount=sixSidedDice()
+		return amount
 	}
 	else if(number==8){
-		eightSidedDice();
+		amount=eightSidedDice();
+		return amount
 	}
 	else if(number==10){
-		tenSidedDice();
+		amount=tenSidedDice();
+		return amount
 	}
 	else if(number==12){
-		twelveSidedDice();
+		amount=twelveSidedDice();
+		return amount
 	}
 	else if(number==14){
-		fourteenSidedDice();
+		amount=fourteenSidedDice();
+		return amount
 	}		
 	else{
 		prompt('Enter a real dice amount');
@@ -90,8 +98,10 @@ function rollDice(number){
 function gameRules(){
 	let playerOneInput=prompt('Player one: Rock, Paper, or Scissors?')
 	let playerTwoInput=prompt('Player two: Rock, Paper, or Scissors?')
+
 	if(playerOneInput=="Paper" && playerTwoInput=="Rock"){
 		alert('Player One Wins!!!!');
+
 			return
 	}
 	else if(playerOneInput=='Scissors' && playerTwoInput=='Paper'){
@@ -123,9 +133,9 @@ function gameRules(){
 	}
 }
 
-function playerOneInput(){
+// function playerOneInput(){
 	// let rock='rock'
-	let input=prompt('Player One enter Rock, Paper, or Scissors')
+	// let input=prompt('Player One enter Rock, Paper, or Scissors')
 	// if(input=='paper'){
 	// 	//return paper
 	// }
@@ -138,10 +148,10 @@ function playerOneInput(){
 	// else{
 	// 	prompt('Please enter rock, paper, or scissors')
 	// }
-}
+// }
 
-function playerTwoInput(){
-	let input=prompt('Player Two enter Rock, Paper, or Scissors')
+// function playerTwoInput(){
+// 	let input=prompt('Player Two enter Rock, Paper, or Scissors')
 	// if(input=='paper'){
 	// 	//return paper
 	// }
@@ -154,7 +164,7 @@ function playerTwoInput(){
 	// else{
 	// 	prompt('Please enter rock, paper, or scissors')
 	// }
-}
+// }
 
 // function getRPSCards(){
 // 	let input= prompt('Enter Dice size 4, 6, 8, 10, 12, 14');
@@ -216,33 +226,36 @@ function playerTwoInput(){
 // }
 
 function getCards(){
-	
-	let input=prompt('Enter dice size');
-	let cards=rollDice(input);
+	let cards=rollDice();
 	return cards
 }
 
 function playerArray(){
-	let paperInput;
-	let rockInput;
-	let scissorInput;
-	playerArray=[getCards(paperInput),getCards(rockInput),getCards(scissorInput)]
+	let paperInput=rollDice()
+	let rockInput=rollDice()
+	let scissorInput=rollDice()
+	let playerArray=[paperInput,rockInput,scissorInput]
 	return playerArray
 
 }
+console.log(arrayPlayer())
 
 function arrayPlayer(){
-	let paperInput;
-	let rockInput;
-	let scissorInput;
-	arrayPlayerOne=[getCards(paperInput),getCards(rockInput),getCards(scissorInput)]
-	return arrayPlayer
+	let arrayPlayerOne=[getCards(),getCards(),getCards()]
+	return arrayPlayerOne
 }
 
 function playerOneArray(){
 	let playerOneArray=[playerArray()+arrayPlayer()]
 	console.log(playerOneArray);
 	return playerOneArray
+}
+
+function combineArrays(){
+	let newSumArray;
+	for(i=0;i<playerOneArray.length;i++){
+
+	}
 }
 
 
@@ -291,5 +304,5 @@ function playerOneArray(){
 
 // playerOneArray()
 
-gameRules();
-getCards();
+rollDice()
+playerArray()
