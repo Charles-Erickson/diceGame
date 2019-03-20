@@ -73,29 +73,34 @@ function rollDice(){
 	}
 }
 
-function primeNumberDector(numb){
-	for (let i=2;i<numb;i++){
-		if(numb<2){
-			false;
-		}
-		else if(numb%i===0){
-			false;
-		}
-		else{
-			 true;
-			}
-		if(numb == true ){
-			console.log(numb)
-			return numb
-		}
-	}
+// function primeNumberDector(numb){
+// 	for (let i=2;i<numb;i++){
+// 		if(numb<2){
+// 			false;
+// 		}
+// 		else if(numb%i===0){
+// 			false;
+// 		}
+// 		else{
+// 			 true;
+// 			}
+// 		if(numb == true ){
+// 			console.log(numb)
+// 			return numb
+// 		}
+// 	}
+// }
+
+function isPrime(num) {
+  var sqrtnum=Math.floor(Math.sqrt(num));
+    var prime = num != 1;
+    for(var i=2; i<sqrtnum+1; i++) { // sqrtnum+1
+        if(num % i == 0) {
+            prime = false;
+            break;
+        }
+    }
+    return prime;
 }
 
-primeNumberDector(25)
-// function gamePlay()
-	// let amount;
-	// for(i=0;i<amount;amount )
-
-primeNumberDector(31)
- 
-primeNumberDector(7)
+isPrime(25)

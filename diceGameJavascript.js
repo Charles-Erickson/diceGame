@@ -91,7 +91,8 @@ function rollDice(){
 		return amount
 	}		
 	else{
-		prompt('Enter a real dice amount');
+	 alert('Enter a real dice amount');
+	 rollDice();
 	}
 }
 
@@ -101,16 +102,28 @@ function getCards(){
 }
 
 function arrayPlayer(){
-	let paper=getCards();
-	let rock=getCards();
-	let scissors= getCards();
-	let pap=getCards();
-	let roc=getCards();
-	let scis= getCards();
-	let playerArray=[paper+pap,rock+rock,scissors+scis]
+
+	let player1Card = {
+		rock : 0,
+		paper : 0,
+		scissors : 0
+	}
+
+	let scrap=alert('Roll for Paper'); getCards();
+	let stone=alert('Roll for Rock'); getCards();
+	let scissor=alert('Roll for Scissors'); getCards();
+	let pap=alert('Roll for Paper'); getCards();
+	let roc=alert('Roll for Rock'); getCards();
+	let scis=alert('Roll for Scissors'); getCards();
+	player1Card.rock = stone+roc;
+	player1Card.paper= scrap+pap;
+	player1Card.scissors= scissor+scis;
+	
 	return playerArray
 
 }
+
+arrayPlayer()
 
 function getPlayerTwoHand(){
 	let twoHand=arrayPlayer();
@@ -129,22 +142,25 @@ function playCard(){
 	let input=prompt('Player one: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
 	let playCard;
 	switch(input){
-		case(1):
+		case "1":
 		playcard="Paper"
 		return playCard;
 		break;
-	case(2):
+	case "2":
 		playCard='Rock'
 		return playCard;
 		break;
-	case(3):
+	case "3":
 		playCard='Scissors'
 		return playCard;
 		break;
 	default:
-		prompt('Enter 1, 2, or 3')
+		alert('Enter 1, 2, or 3')
+		playCard();
 	}
 }
+
+playCard();
 
 function getPlayerOneHand(){
 	let oneHand=arrayPlayer()
@@ -188,11 +204,12 @@ function gameRules(){
 		return 
 	}
 	else{
-		alert('redo')
+		alert('Redo')
+		gameRules();
 	}
 }
 
-
+rollDice()
 
 // function playerOneInput(){
 	// let rock='rock'
