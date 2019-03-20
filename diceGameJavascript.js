@@ -1,25 +1,6 @@
 'use strict'
 
-// let "Paper">"Rock"
-// let "Rock">'Scissors'
-// let 'Scissors'>'Paper'
-// //holder for later formula
 
-// function rockPaperScissors(){
-// 	let min=1
-// 	let max=4
-// let amount=Math.floor(Math.random() *(max-min)+min);
-// if(amount==1){
-// 	console.log("Paper");
-// }
-// else if(amount==2){
-// 	console.log('Rock');
-// }
-// else if(amount==3){
-// 	console.log('Scissors')
-// }
-// 	return amount;
-// }
 
 function fourSidedDice(){
 	let min=1
@@ -92,7 +73,8 @@ function rollDice(){
 	}		
 	else{
 	 alert('Enter a real dice amount');
-	 rollDice();
+	 amount=rollDice();
+	 return amount
 	}
 }
 
@@ -101,7 +83,7 @@ function getCards(){
 	return cards
 }
 
-function arrayPlayer(){
+function bothPlayerCards(){
 
 	let player1Card = {
 		rock : 0,
@@ -109,66 +91,73 @@ function arrayPlayer(){
 		scissors : 0
 	}
 
-	let scrap=alert('Roll for Paper'); getCards();
-	let stone=alert('Roll for Rock'); getCards();
-	let scissor=alert('Roll for Scissors'); getCards();
-	let pap=alert('Roll for Paper'); getCards();
-	let roc=alert('Roll for Rock'); getCards();
-	let scis=alert('Roll for Scissors'); getCards();
-	player1Card.rock = stone+roc;
-	player1Card.paper= scrap+pap;
-	player1Card.scissors= scissor+scis;
-	
-	return playerArray
+	let player2Card={
+		rock:0,
+		paper:0,
+		scissors:0
+	}
+	alert('Player One roll for cards')
+	player1Card.paper=findPaperCardSum();
+	player1Card.rock= findRockCardSum();
+	player1Card.scissors= findScissorsCardSum();
 
+	alert('Player Two roll for cards')
+	player2Card.paper=findPaperCardSum();
+	player2Card.rock= findRockCardSum();
+	player2Card.scissors= findScissorsCardSum();
+	console.log(player1Card);
+	console.log(player2Card);
+
+	return player1Card, player2Card
 }
 
-arrayPlayer()
+bothPlayerCards()
 
-function getPlayerTwoHand(){
-	let twoHand=arrayPlayer();
-	console.log(twoHand);
-	return twoHand
-
+function findPaperCardSum(){
+	alert( 'Roll for Paper');
+	let p1=getCards();
+	let p2= getCards();
+	let paper=p1+p2; 
+	return paper
 }
 
 
-// function playerArray(){
-// 	let playerArray=[getCards(),getCards(),getCards()]
-// 	return playerArray
-// }
+function findRockCardSum(){
+	alert('Roll for Rock');
+	let r1= getCards();
+	let r2=getCards();
+	let rock=r1+r2;
+	return rock
+}
+
+function findScissorsCardSum(){
+	alert('Roll for Scissors');
+	let s1= getCards();
+	let s2=getCards();
+	let scissors=s1+s2;
+	return scissors
+}
 
 function playCard(){
 	let input=prompt('Player one: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
 	let playCard;
 	switch(input){
 		case "1":
-		playcard="Paper"
+		playCard="Paper"
 		return playCard;
-		break;
 	case "2":
 		playCard='Rock'
 		return playCard;
-		break;
 	case "3":
 		playCard='Scissors'
 		return playCard;
-		break;
 	default:
 		alert('Enter 1, 2, or 3')
 		playCard();
 	}
 }
 
-playCard();
 
-function getPlayerOneHand(){
-	let oneHand=arrayPlayer()
-	console.log(oneHand)
-	return oneHand
-}
-
-// gameRules();
 
 function gameRules(){
 	let playerOneInput=playCard()
@@ -209,7 +198,52 @@ function gameRules(){
 	}
 }
 
-rollDice()
+function gamePlay(){
+	alert('Players roll for cards');
+	bothPlayerCards();
+}
+
+
+function cardCounter(){
+	
+}
+
+// let "Paper">"Rock"
+// let "Rock">'Scissors'
+// let 'Scissors'>'Paper'
+// //holder for later formula
+
+// function rockPaperScissors(){
+// 	let min=1
+// 	let max=4
+// let amount=Math.floor(Math.random() *(max-min)+min);
+// if(amount==1){
+// 	console.log("Paper");
+// }
+// else if(amount==2){
+// 	console.log('Rock');
+// }
+// else if(amount==3){
+// 	console.log('Scissors')
+// }
+// 	return amount;
+// }
+
+// arrayPlayer()
+
+// function getPlayerTwoHand(){
+// 	let twoHand=arrayPlayer();
+// 	console.log(twoHand);
+// 	return twoHand
+
+// }
+
+
+// function playerArray(){
+// 	let playerArray=[getCards(),getCards(),getCards()]
+// 	return playerArray
+// }
+
 
 // function playerOneInput(){
 	// let rock='rock'
@@ -303,6 +337,14 @@ rollDice()
 // 	}
 // }
 
+
+// function getPlayerOneHand(){
+// 	let oneHand=arrayPlayer()
+// 	console.log(oneHand)
+// 	return oneHand
+// }
+
+// gameRules();
 
 // console.log(playerArray())
 // function playerArray(){
