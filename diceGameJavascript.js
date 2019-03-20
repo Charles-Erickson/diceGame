@@ -1,74 +1,35 @@
 'use strict'
 
-
-
-function fourSidedDice(){
-	let min=1
-	let max=5
-	let amount=Math.floor(Math.random() *(max-min)+min);
-	return amount
-}
-
-function sixSidedDice(){
-	let min=1
-	let max=7
-	let amount=Math.floor(Math.random() *(max-min)+min);
-	return amount
-}
-
-function eightSidedDice(){
-	let min=1
-	let max=9
-	let amount=Math.floor(Math.random() *(max-min)+min);
-	return amount
-}
-
-function tenSidedDice(){
-	let min=1
-	let max=11
-	let amount=Math.floor(Math.random() *(max-min)+min);
-	return amount
-}
-
-function twelveSidedDice(){
-	let min=1
-	let max=13
-	let amount=Math.floor(Math.random() *(max-min)+min);
-	return amount
-}
-
-function fourteenSidedDice(){
-	let min=1
-	let max=15
-	let amount=Math.floor(Math.random() *(max-min)+min);
-	return amount
+function rollDie(n){
+	let amount=Math.floor(Math.random() *n)+1;
+	return amount;
 }
 
 function rollDice(){
 	let number=prompt('Enter a dice size 4, 6, 8, 10, 12, 14:')
 	let amount;
 	if(number==4){
-		amount=fourSidedDice();
-		return amount
+		amount=rollDie(4);
+		return amount;
 	}
 	else if(number==6){
-		amount=sixSidedDice()
+		amount=rollDie(6)
 		return amount
 	}
 	else if(number==8){
-		amount=eightSidedDice();
+		amount=rollDie(8);
 		return amount
 	}
 	else if(number==10){
-		amount=tenSidedDice();
+		amount=rollDie(10);
 		return amount
 	}
 	else if(number==12){
-		amount=twelveSidedDice();
+		amount=rollDie(12);
 		return amount
 	}
 	else if(number==14){
-		amount=fourteenSidedDice();
+		amount=rollDie(14);
 		return amount
 	}		
 	else{
@@ -111,7 +72,6 @@ function findPaperCardSum(){
 	return paper
 }
 
-
 function findRockCardSum(){
 	alert('Roll for Rock');
 	let r1= getCards();
@@ -128,126 +88,152 @@ function findScissorsCardSum(){
 	return scissors
 }
 
-function playCardPlayerOne(player1Card){
-	let input=prompt('Player one: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
+function playCardPlayerTwo(player2Card){
+	let input=prompt('Player two: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
 	let playCard;
+	let cardsToPlay=player2Card
 	switch(input){
 		case "1":
-		if(player1Card.paper>0){
+		if(cardsToPlay.paper>0){
 		playCard="Paper"
-		playCard.paper-1
+		player2Card.paper -= 1;
+		console.log(cardsToPlay)
 		return playCard;
 		}
 		else{
 			alert('No Paper cards left');
-			playCard=playCardPlayerOne()
-			return playCard
+			playCard=playCardPlayerTwo(player2Card);
+			return playCard;
 		}
 	case "2":
-		if(player1Card.rock>0){
+		if(cardsToPlay.rock>0){
 		playCard="Rock"
-		playCard.rock-1
+		player2Card.rock -= 1;
+		console.log(cardsToPlay)
 		return playCard;
 		}
 		else{
 			alert('No Rock cards left');
-			playCard=playCardPlayerOne()
+			playCard=playCardPlayerTwo(player2Card);
 			return playCard
 		}
 
 	case "3":
-		if(player1Card.scissors>0){
+		if(cardsToPlay.scissors>0){
 		playCard="Scissors"
-		playCard.scissors-1
+		player2Card.scissors -= 1;
+		console.log(cardsToPlay)
 		return playCard;
 		}
 		else{
 			alert('No Scissor cards left');
-			playCard=playCardPlayerOne()
+			playCard=playCardPlayerTwo(player2Card);
 			return playCard
 		}
 	default:
 		alert('Enter 1, 2, or 3')
-		playCardPlayerOne();
+		playCardPlayerTwo(player2Card);
 	}
 }
 
-function playCardPlayerTwo(){
+function playCardPlayerOne(player1Card){
+	let input=prompt('Player one: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
+	let playCard;
+	let cardsToPlay=player1Card
+	switch(input){
+		case "1":
+		if(cardsToPlay.paper>0){
+		playCard="Paper"
+		player1Card.paper -= 1;
+		console.log(cardsToPlay)
+		return playCard;
+		}
+		else{
+			alert('No Paper cards left');
+			playCard=playCardPlayerOne(player1Card);
+			return playCard;
+		}
+	case "2":
+		if(cardsToPlay.rock>0){
+		playCard="Rock"
+		player1Card.rock -= 1;
+		console.log(cardsToPlay)
+		return playCard;
+		}
+		else{
+			alert('No Rock cards left');
+			playCard=playCardPlayerOne(player1Card);
+			return playCard
+		}
+
+	case "3":
+		if(cardsToPlay.scissors>0){
+		playCard="Scissors"
+		player1Card.scissors -= 1;
+		console.log(cardsToPlay)
+		return playCard;
+		}
+		else{
+			alert('No Scissor cards left');
+			playCard=playCardPlayerOne(player1Card);
+			return playCard
+		}
+	default:
+		alert('Enter 1, 2, or 3')
+		playCardPlayerOne(player2Card);
+	}
+}
+
+function playCard(){
 	let input=prompt('Player two: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
 	let playCard;
 	switch(input){
 		case "1":
-		if(player2Card.paper>0){
 		playCard="Paper"
-		player2Card.paper-1
 		return playCard;
-		}
-		else{
-			alert('No Paper cards left');
-			playCard=playCardPlayerTwo();
-			return playCard
-		}
 	case "2":
-		if(player2Card.rock>0){
 		playCard="Rock"
-		player2Card.rock-1
 		return playCard;
-		}
-		else{
-			alert('No Rock cards left');
-			playCard=playCardPlayerTwo();
-			return playCard
-		}
-
 	case "3":
-		if(player2Card.scissors>0){
 		playCard="Scissors"
-		player2Card.scissors-1
 		return playCard;
-		}
-		else{
-			alert('No Scissor cards left');
-			playCard=playCardPlayerTwo();
-			return playCard
-		}
 	default:
 		alert('Enter 1, 2, or 3')
-		playCardPlayerTwo();
+		playCard();
 	}
 }
-
-
 
 function gameRules(player1Card,player2Card){
 	let player1=player1Card;
 	let player2= player2Card;
-	let playerOneInput=playCardPlayerOne(player1);
-	let playerTwoInput=playCardPlayerTwo(player2);
+	let playerOneInput=playCardPlayerOne(player1Card);
+	let playerTwoInput=playCardPlayerTwo(player2Card);
+	let win;
 
 	if(playerOneInput=="Paper" && playerTwoInput=="Rock"){
 		alert('Player One Wins!!!!');
-		console.log('Player One Win');
-			return
+		win=console.log('Player One Win');
+			return win;
 	}
 	else if(playerOneInput=='Scissors' && playerTwoInput=='Paper'){
 		alert('Player One Wins!!!!');
-		console.log('Player One Win');
-			return
+		win=console.log('Player One Win');
+			return win;
 	}
 	else if(playerOneInput=='Rock' && playerTwoInput=='Scissors'){
 		alert('Player One Wins!!!!');
-		console.log('Player One Win');
-			return 
+		win= console.log('Player One Win');
+			return win;
 	}
 	else if(playerTwoInput=='Paper' && playerOneInput=="Rock"){
 		alert('Player Two Wins!!!!');
-		console.log("Player Two Win");
-			return
+		win=console.log("Player Two Win");
+			return;
 	}
 	else if(playerTwoInput=='Rock' && playerOneInput=='Scissors'){
 		alert('Player Two Wins!!!!');
-		console.log("Player Two Win");
-			return
+		win=console.log("Player Two Win");
+			return win; 
 	}
 	else if(playerTwoInput=='Scissors' && playerOneInput=="Paper"){
 		alert('Player Two Wins!!!!');
@@ -256,7 +242,7 @@ function gameRules(player1Card,player2Card){
 	}
 	else if( playerOneInput===playerTwoInput){
 		alert('Draw')
-		return 
+		gameRules();
 	}
 	else{
 		alert('Redo')
@@ -276,14 +262,166 @@ function gamePlay(){
 		paper:0,
 		scissors:0
 	}
+	let playerWins;
+	alert('Player One roll for cards')
+	player1Card.paper=findPaperCardSum();
+	player1Card.rock= findRockCardSum();
+	player1Card.scissors= findScissorsCardSum();
+
+	alert('Player Two roll for cards')
+	player2Card.paper=findPaperCardSum();
+	player2Card.rock= findRockCardSum();
+	player2Card.scissors= findScissorsCardSum();
+	console.log(player1Card);
+	console.log(player2Card);
 	alert("Ohhh that's a baseball");
-	bothPlayerCards(player1Card, player2Card);
-	gameRules();
+	let player1=player1Card;
+	let player2=player2Card;
+	for(let i=0;i<3;i++){
+		gameRules(player1, player2);
+	}
+	
 }
 
 gamePlay()
 
 
+// function playCardPlayerOne(player1Card){
+// 	let input=prompt('Player two: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
+// 	let playCard;
+	
+// 	switch(input){
+// 			case "1":
+// 		if(cardsToPlay.paper>0){
+// 		playCard="Paper"
+// 		cardsToPlay.paper-1
+// 		console.log(cardsToPlay)
+// 		return playCard, cardsToPlay;
+// 		}
+// 		else{
+// 			alert('No Paper cards left');
+// 			playCard=playCardPlayerOne(player1Card);
+// 			return playCard;
+// 		}
+// 	case "2":
+// 		if(cardsToPlay.rock>0){
+// 		playCard="Rock"
+// 		cardsToPlay.rock-1
+// 		console.log(cardsToPlay)
+// 		return playCard, cardsToPlay;
+// 		}
+// 		else{
+// 			alert('No Rock cards left');
+// 			playCard=playCardPlayerOne(player1Card);
+// 			return playCard
+// 		}
+
+// 	case "3":
+// 		if(cardsToPlay.scissors>0){
+// 		playCard="Scissors"
+// 		cardsToPlay.scissors-1
+// 		console.log(cardsToPlay)
+// 		return playCard, cardsToPlay;
+// 		}
+// 		else{
+// 			alert('No Scissor cards left');
+// 			playCard=playCardPlayerOne(player1Card);
+// 			return playCard
+// 		}
+// 	default:
+// 		alert('Enter 1, 2, or 3')
+// 		playCardPlayerTwo();
+// 	}
+// }
+
+// function fourSidedDice(){
+// 	let min=1
+// 	let max=5
+// 	let amount=Math.floor(Math.random() *(max-min)+min);
+// 	return amount
+// }
+
+// function sixSidedDice(){
+// 	let min=1
+// 	let max=7
+// 	let amount=Math.floor(Math.random() *(max-min)+min);
+// 	return amount
+// }
+
+// function eightSidedDice(){
+// 	let min=1
+// 	let max=9
+// 	let amount=Math.floor(Math.random() *(max-min)+min);
+// 	return amount
+// }
+
+// function tenSidedDice(){
+// 	let min=1
+// 	let max=11
+// 	let amount=Math.floor(Math.random() *(max-min)+min);
+// 	return amount
+// }
+
+// function twelveSidedDice(){
+// 	let min=1
+// 	let max=13
+// 	let amount=Math.floor(Math.random() *(max-min)+min);
+// 	return amount
+// }
+
+// function fourteenSidedDice(){
+// 	let min=1
+// 	let max=15
+// 	let amount=Math.floor(Math.random() *(max-min)+min);
+// 	return amount
+// }
+
+
+
+
+// function playCardPlayerOne(player1Card){
+// 	let input=prompt('Player one: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
+// 	let playCard;
+// 	switch(input){
+// 		case "1":
+// 		if(player1Card.paper>0){
+// 		playCard="Paper"
+// 		playCard.paper-1
+// 		return playCard;
+// 		}
+// 		else{
+// 			alert('No Paper cards left');
+// 			playCard=playCardPlayerOne()
+// 			return playCard
+// 		}
+// 	case "2":
+// 		if(player1Card.rock>0){
+// 		playCard="Rock"
+// 		playCard.rock-1
+// 		return playCard;
+// 		}
+// 		else{
+// 			alert('No Rock cards left');
+// 			playCard=playCardPlayerOne()
+// 			return playCard
+// 		}
+
+// 	case "3":
+// 		if(player1Card.scissors>0){
+// 		playCard="Scissors"
+// 		playCard.scissors-1
+// 		return playCard;
+// 		}
+// 		else{
+// 			alert('No Scissor cards left');
+// 			playCard=playCardPlayerOne()
+// 			return playCard
+// 		}
+// 	default:
+// 		alert('Enter 1, 2, or 3')
+// 		playCardPlayerOne();
+// 	}
+// }
 // function cardCounter(){
 
 // }
