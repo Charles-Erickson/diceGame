@@ -51,8 +51,8 @@ function findPaperCardSum(){
 	let p1=getCards();
 	let p2= getCards();
 	let paper=p1+p2; 
-	alert('Total Paper Cards', String(paper));
-	return paper0
+	alert('Total Paper Cards '+paper);
+	return paper
 }
 
 function findRockCardSum(){
@@ -60,7 +60,7 @@ function findRockCardSum(){
 	let r1= getCards();
 	let r2=getCards();
 	let rock=r1+r2;
-	alert('Total Rock Cards', String(rock));
+	alert('Total Rock Cards '+rock);
 	return rock
 }
 
@@ -69,7 +69,7 @@ function findScissorsCardSum(){
 	let s1= getCards();
 	let s2=getCards();
 	let scissors=s1+s2;
-	alert('Total Scissors Cards', String(scissors));
+	alert('Total Scissors Cards '+scissors);
 	return scissors
 }
 
@@ -123,7 +123,7 @@ function playCardPlayerTwo(player2Card){
 function playCardPlayerOne(player1Card){
 	let input=prompt('Player one: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
 	let playCard;
-	switch(input){
+		switch(input){
 		case "1":
 		if(player1Card.paper>0){
 		playCard="Paper"
@@ -164,25 +164,6 @@ function playCardPlayerOne(player1Card){
 	default:
 		alert('Enter 1, 2, or 3')
 		playCardPlayerOne(player1Card);
-	}
-}
-
-function playCard(){
-	let input=prompt('Player two: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
-	let playCard;
-	switch(input){
-		case "1":
-		playCard="Paper"
-		return playCard;
-	case "2":
-		playCard="Rock"
-		return playCard;
-	case "3":
-		playCard="Scissors"
-		return playCard;
-	default:
-		alert('Enter 1, 2, or 3')
-		playCard();
 	}
 }
 
@@ -229,7 +210,7 @@ function gameRules(player1Card,player2Card){
 	}
 	else{
 		alert('Redo')
-		gameRules();
+		gameRules(player1Card,player2Card);
 	}
 }
 
@@ -257,16 +238,36 @@ function gamePlay(){
 	player2Card.scissors= findScissorsCardSum();
 	console.log("Player 1 Hand ", player1Card);
 	console.log("Player 2 Hand ", player2Card);
-	alert("Ohhh that's a baseball");
+	alert("Let's Play!!!");
 	let player1=player1Card;
 	let player2=player2Card;
-	for(let i=0;i<7;i++){
+	for(let i=0;i<5;i++){
 		gameRules(player1, player2);
 	}
 	
 }
 
 gamePlay()
+
+
+// function playCard(){
+// 	let input=prompt('Player two: Enter 1 for Paper; 2 for Rock; 3 for Scissors')
+// 	let playCard;
+// 	switch(input){
+// 		case "1":
+// 		playCard="Paper"
+// 		return playCard;
+// 	case "2":
+// 		playCard="Rock"
+// 		return playCard;
+// 	case "3":
+// 		playCard="Scissors"
+// 		return playCard;
+// 	default:
+// 		alert('Enter 1, 2, or 3')
+// 		playCard();
+// 	}
+// }
 
 
 
